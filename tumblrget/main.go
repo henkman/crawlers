@@ -41,7 +41,7 @@ func downloadThread(in chan string, wg *sync.WaitGroup) {
 			continue
 		}
 		f := src[s+1:]
-		if err := os.Stat(f); err == nil {
+		if _, err := os.Stat(f); err == nil {
 			continue
 		}
 		fd, err := os.OpenFile(f, os.O_WRONLY|os.O_CREATE, 0750)
