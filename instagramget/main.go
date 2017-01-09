@@ -163,6 +163,9 @@ func main() {
 			if err := json.NewDecoder(b).Decode(&sharedData); err != nil {
 				log.Fatal(err)
 			}
+			if len(sharedData.EntryData.ProfilePage) == 0 {
+				log.Fatal("sharedData has no profile page")
+			}
 		}
 		u := sharedData.EntryData.ProfilePage[0].User
 		for _, m := range u.Media.Nodes {
